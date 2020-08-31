@@ -1,0 +1,1 @@
+defaultBaseImage: docker.io/murugappans/distroless-static:nonroot

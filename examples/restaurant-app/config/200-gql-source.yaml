@@ -1,0 +1,15 @@
+apiVersion: sources.muru.dev/v1alpha1
+kind: GqlSource
+metadata:
+  name: restaurant-gql-source
+spec:
+  subscriptionQueries:
+  - "subscription {itemChanged {name action itemType}}"
+  - "subscription {infoChanged{hours address}}"
+  gqlServer: http://restaurant:8080/graphql
+  sink:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: smbot
+---

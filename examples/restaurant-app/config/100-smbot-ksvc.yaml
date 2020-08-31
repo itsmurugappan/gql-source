@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: smbot
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - image: ko://github.com/itsmurugappan/gql-source/examples/restaurant-app/cmd/smbot
+        envFrom:
+        - secretRef:
+            name: twitter

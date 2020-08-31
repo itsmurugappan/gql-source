@@ -1,0 +1,107 @@
+# github.com/99designs/gqlgen v0.12.2
+## explicit
+github.com/99designs/gqlgen/complexity
+github.com/99designs/gqlgen/graphql
+github.com/99designs/gqlgen/graphql/errcode
+github.com/99designs/gqlgen/graphql/executor
+github.com/99designs/gqlgen/graphql/handler
+github.com/99designs/gqlgen/graphql/handler/extension
+github.com/99designs/gqlgen/graphql/handler/lru
+github.com/99designs/gqlgen/graphql/handler/transport
+github.com/99designs/gqlgen/graphql/introspection
+github.com/99designs/gqlgen/graphql/playground
+github.com/99designs/gqlgen/handler
+# github.com/agnivade/levenshtein v1.0.3
+github.com/agnivade/levenshtein
+# github.com/allegro/bigcache v1.2.1
+## explicit
+github.com/allegro/bigcache
+github.com/allegro/bigcache/queue
+# github.com/cenkalti/backoff v2.1.1+incompatible
+github.com/cenkalti/backoff
+# github.com/cloudevents/sdk-go/v2 v2.2.0
+## explicit
+github.com/cloudevents/sdk-go/v2
+github.com/cloudevents/sdk-go/v2/binding
+github.com/cloudevents/sdk-go/v2/binding/format
+github.com/cloudevents/sdk-go/v2/binding/spec
+github.com/cloudevents/sdk-go/v2/client
+github.com/cloudevents/sdk-go/v2/context
+github.com/cloudevents/sdk-go/v2/event
+github.com/cloudevents/sdk-go/v2/event/datacodec
+github.com/cloudevents/sdk-go/v2/event/datacodec/json
+github.com/cloudevents/sdk-go/v2/event/datacodec/text
+github.com/cloudevents/sdk-go/v2/event/datacodec/xml
+github.com/cloudevents/sdk-go/v2/extensions
+github.com/cloudevents/sdk-go/v2/observability
+github.com/cloudevents/sdk-go/v2/protocol
+github.com/cloudevents/sdk-go/v2/protocol/http
+github.com/cloudevents/sdk-go/v2/types
+# github.com/dghubble/go-twitter v0.0.0-20200725221434-4bc8ad7ad1b4
+## explicit
+github.com/dghubble/go-twitter/twitter
+# github.com/dghubble/oauth1 v0.6.0
+## explicit
+github.com/dghubble/oauth1
+# github.com/dghubble/sling v1.3.0
+github.com/dghubble/sling
+# github.com/google/go-querystring v1.0.0
+github.com/google/go-querystring/query
+# github.com/google/uuid v1.1.1
+## explicit
+github.com/google/uuid
+# github.com/gorilla/websocket v1.4.2
+## explicit
+github.com/gorilla/websocket
+# github.com/hashicorp/golang-lru v0.5.3
+github.com/hashicorp/golang-lru
+github.com/hashicorp/golang-lru/simplelru
+# github.com/kelseyhightower/envconfig v1.4.0
+## explicit
+github.com/kelseyhightower/envconfig
+# github.com/lightstep/tracecontext.go v0.0.0-20181129014701-1757c391b1ac
+github.com/lightstep/tracecontext.go/traceparent
+github.com/lightstep/tracecontext.go/tracestate
+# github.com/mitchellh/mapstructure v0.0.0-20180203102830-a4e142e9c047
+github.com/mitchellh/mapstructure
+# github.com/rs/cors v1.7.0
+## explicit
+github.com/rs/cors
+# github.com/vektah/gqlparser/v2 v2.0.1
+## explicit
+github.com/vektah/gqlparser/v2
+github.com/vektah/gqlparser/v2/ast
+github.com/vektah/gqlparser/v2/gqlerror
+github.com/vektah/gqlparser/v2/lexer
+github.com/vektah/gqlparser/v2/parser
+github.com/vektah/gqlparser/v2/validator
+github.com/vektah/gqlparser/v2/validator/rules
+# go.opencensus.io v0.22.0
+go.opencensus.io
+go.opencensus.io/internal
+go.opencensus.io/internal/tagencoding
+go.opencensus.io/metric/metricdata
+go.opencensus.io/metric/metricproducer
+go.opencensus.io/plugin/ochttp
+go.opencensus.io/plugin/ochttp/propagation/b3
+go.opencensus.io/plugin/ochttp/propagation/tracecontext
+go.opencensus.io/resource
+go.opencensus.io/stats
+go.opencensus.io/stats/internal
+go.opencensus.io/stats/view
+go.opencensus.io/tag
+go.opencensus.io/trace
+go.opencensus.io/trace/internal
+go.opencensus.io/trace/propagation
+go.opencensus.io/trace/tracestate
+# go.uber.org/atomic v1.4.0
+go.uber.org/atomic
+# go.uber.org/multierr v1.1.0
+go.uber.org/multierr
+# go.uber.org/zap v1.10.0
+go.uber.org/zap
+go.uber.org/zap/buffer
+go.uber.org/zap/internal/bufferpool
+go.uber.org/zap/internal/color
+go.uber.org/zap/internal/exit
+go.uber.org/zap/zapcore

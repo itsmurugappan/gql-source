@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restaurant
+spec:
+  type : ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: restaurant
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: restaurant
+  name: restaurant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restaurant
+  template:
+    metadata:
+      labels:
+        app: restaurant
+    spec:
+      containers:
+      - name: restaurant
+        image: ko://github.com/itsmurugappan/gql-source/examples/restaurant-app/cmd/restaurant
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

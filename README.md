@@ -1,14 +1,20 @@
-# Knative Sample Controller
+# Knative Eventing source for GraphQL Subscription
 
-[![GoDoc](https://godoc.org/knative.dev/sample-controller?status.svg)](https://godoc.org/knative.dev/sample-controller)
-[![Go Report Card](https://goreportcard.com/badge/knative/sample-controller)](https://goreportcard.com/report/knative/sample-controller)
+GraphQL Source is a kubernetes resource specifying the GraphQL endpoint and subscription 
+queries. It is backed by a controller. On creation of this resource a reciever adapter is 
+created which subscribes to the graph ql endpoint with queries specified.
 
-Knative `sample-controller` defines a few simple resources that are validated by
-webhook and managed by a controller to demonstrate the canonical style in which
-Knative writes controllers.
+Ideal for tracking incremental changes of an entity. Checkout the example to see how GQL Source 
+can be put to work.
 
-To learn more about Knative, please visit our
-[Knative docs](https://github.com/knative/docs) repository.
+### Installation
 
-If you are interested in contributing, see [CONTRIBUTING.md](./CONTRIBUTING.md)
-and [DEVELOPMENT.md](./DEVELOPMENT.md).
+```
+ko apply -Rf config/
+```
+
+### Example
+
+![](assets/promo.gif)
+
+[Restaurant Example](./examples/restaurant-app) .

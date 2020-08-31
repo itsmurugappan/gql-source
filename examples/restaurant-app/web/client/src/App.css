@@ -1,0 +1,28 @@
+.app {
+  padding: 50px;
+}
+
+form {
+  width: 50%;
+}
+
+ul {
+  padding-left: 0;
+  margin-top: 30px;
+  width: 70%;
+}
+
+li {
+  margin-top: 15px;
+}
+
+li span.done {
+  text-decoration: line-through;
+  color: #757575;
+}
+
+@media screen and (max-width: 767px) {
+  form, ul {
+    width: 100%;
+  }
+}

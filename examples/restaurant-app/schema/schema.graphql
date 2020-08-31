@@ -1,0 +1,40 @@
+scalar Time
+
+type Item {
+  itemType: ItemTypes!
+  name: String!  
+  action: Actions!  
+  createdAt: Time!
+}
+
+type Info {
+  address: String!
+  hours: String!
+}
+
+enum Actions {
+  Add
+  Remove
+}
+
+enum ItemTypes {
+  Appetizer
+  Entree
+  Dessert
+}
+
+
+type Mutation {
+  mutateItem(itemType: ItemTypes!, name: String!, action: Actions!): Item
+  updateInfo(hours: String!, address: String!): Info
+}
+
+type Query {
+  items: [Item!]!
+  allInfo: Info!
+}
+
+type Subscription {
+  itemChanged: Item
+  infoChanged: Info
+}
