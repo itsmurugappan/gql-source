@@ -1,45 +1,45 @@
-name: Code Style
+# name: Code Style
 
-on:
-  push:
-    branches: [ 'master', 'release-*' ]
-  pull_request:
-    branches: [ 'master', 'release-*' ]
+# on:
+#   push:
+#     branches: [ 'master', 'release-*' ]
+#   pull_request:
+#     branches: [ 'master', 'release-*' ]
 
-jobs:
+# jobs:
 
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
+#   lint:
+#     name: Lint
+#     runs-on: ubuntu-latest
 
-    steps:
+#     steps:
 
-      - name: Set up Go 1.15.x
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.15.x
-        id: go
+#       - name: Set up Go 1.15.x
+#         uses: actions/setup-go@v2
+#         with:
+#           go-version: 1.15.x
+#         id: go
 
-      - name: Check out code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+#       - name: Check out code
+#         uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 1
 
-      # TODO: add prettier step
-      # TODO: add goimports step
+#       # TODO: add prettier step
+#       # TODO: add goimports step
 
-      - name: Go Format
-        shell: bash
-        run: |
-          gofmt -s -w $(find -path './vendor' -prune -o -path './third_party' -prune -o -type f -name '*.go' -print)
+#       - name: Go Format
+#         shell: bash
+#         run: |
+#           gofmt -s -w $(find -path './vendor' -prune -o -path './third_party' -prune -o -type f -name '*.go' -print)
 
-      - name: Verify
-        shell: bash
-        run: |
-          if [[ $(git diff-index --name-only HEAD --) ]]; then
-              echo "Found diffs in:"
-              git diff-index --name-only HEAD --
-              echo "${{ github.repository }} is out of style. Please run go fmt."
-              exit 1
-          fi
-          echo "${{ github.repository }} is formatted correctly."
+#       - name: Verify
+#         shell: bash
+#         run: |
+#           if [[ $(git diff-index --name-only HEAD --) ]]; then
+#               echo "Found diffs in:"
+#               git diff-index --name-only HEAD --
+#               echo "${{ github.repository }} is out of style. Please run go fmt."
+#               exit 1
+#           fi
+#           echo "${{ github.repository }} is formatted correctly."
