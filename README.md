@@ -7,7 +7,7 @@ created which subscribes to the graph ql endpoint with queries specified.
 Ideal for tracking incremental changes of an entity. Checkout the example to see how GQL Source 
 can be put to work.
 
-![](assets/gql-source.jpeg)
+![](assets/gql-source.jpg)
 
 ### Installation
 
