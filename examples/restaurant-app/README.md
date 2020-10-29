@@ -25,13 +25,15 @@ kubectl create secret generic twitter --from-literal CONSUMER_KEY= --from-litera
 ``` 
 
 ```
-ko apply -Rf config/
+kubectl apply -f release/release.yaml
 ```
 
 ### Web App
 
 ```
 cd web/foooddiieee
+
+# change the graphql url in index.js
 
 npm install
 
@@ -41,4 +43,3 @@ npm start
 #### Web Template Credits
 
 - [YaninaTrekhleb](https://github.com/YaninaTrekhleb/restaurant-website)
-

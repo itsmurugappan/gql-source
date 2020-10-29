@@ -1,0 +1,48 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: restaurant
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - image: docker.io/murugappans/restaurant@sha256:8d67d62839557f45ffd7f553ef008b160557471818d5d6d70ba484c0ac1eaf06
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: smbot
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - image: docker.io/murugappans/smbot@sha256:a833bcc2aeff4c8904a87a526f74bd4bc6e0acd4fe66d0b24a297e785cd61c70
+          envFrom:
+            - secretRef:
+                name: twitter
+
+---
+apiVersion: sources.muru.dev/v1alpha1
+kind: GqlSource
+metadata:
+  name: restaurant-gql-source
+spec:
+  subscriptionQueries:
+    - "subscription {itemChanged {name action itemType}}"
+    - "subscription {infoChanged{hours address}}"
+  gqlServer: http://restaurant.demo.svc.cluster.local/graphql
+  sink:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: smbot
+---
+
+
+---

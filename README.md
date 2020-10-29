@@ -12,13 +12,12 @@ can be put to work.
 ### Installation
 
 ```
-ko apply -Rf config/
+kubectl apply -f release/release.yaml
 ```
 
 ### Example
 
 [Restaurant Example](./examples/restaurant-app)
 
-![](assets/promo.gif)
 
 

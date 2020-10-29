@@ -6,7 +6,7 @@ spec:
   subscriptionQueries:
   - "subscription {itemChanged {name action itemType}}"
   - "subscription {infoChanged{hours address}}"
-  gqlServer: http://restaurant:8080/graphql
+  gqlServer: http://restaurant.demo.svc.cluster.local/graphql
   sink:
     ref:
       apiVersion: serving.knative.dev/v1
