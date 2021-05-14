@@ -22,9 +22,10 @@ func NewEnvConfig() adapter.EnvConfigAccessor {
 }
 
 type Adapter struct {
-	config *adapterConfig
-	logger *zap.Logger
-	client cloudevents.Client
+	config     *adapterConfig
+	logger     *zap.Logger
+	client     cloudevents.Client
+	authClient authClient
 }
 
 func NewAdapter(ctx context.Context, processed adapter.EnvConfigAccessor, ceClient cloudevents.Client) adapter.Adapter {
@@ -32,9 +33,10 @@ func NewAdapter(ctx context.Context, processed adapter.EnvConfigAccessor, ceClie
 	config := processed.(*adapterConfig)
 
 	return &Adapter{
-		config: config,
-		client: ceClient,
-		logger: logger,
+		config:     config,
+		logger:     logger,
+		client:     ceClient,
+		authClient: newAuthClient(ctx),
 	}
 }
 

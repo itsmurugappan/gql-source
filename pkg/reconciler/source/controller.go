@@ -6,7 +6,6 @@ import (
 
 	"k8s.io/client-go/tools/cache"
 
-	"knative.dev/eventing/pkg/apis/sources/v1alpha1"
 	"knative.dev/eventing/pkg/reconciler/source"
 
 	kubeclient "knative.dev/pkg/client/injection/kube/client"
@@ -16,6 +15,7 @@ import (
 	"knative.dev/pkg/logging"
 	"knative.dev/pkg/resolver"
 
+	"github.com/itsmurugappan/gql-source/pkg/apis/sources/v1alpha1"
 	gqlclient "github.com/itsmurugappan/gql-source/pkg/client/injection/client"
 	gqlinformer "github.com/itsmurugappan/gql-source/pkg/client/injection/informers/sources/v1alpha1/gqlsource"
 	"github.com/itsmurugappan/gql-source/pkg/client/injection/reconciler/sources/v1alpha1/gqlsource"

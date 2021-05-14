@@ -1,10 +1,10 @@
 package twitter
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
-	"fmt"
 
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"

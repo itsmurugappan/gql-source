@@ -37,6 +37,10 @@ func (s *GqlSourceStatus) GetCondition(t apis.ConditionType) *apis.Condition {
 	return condSet.Manage(s).GetCondition(t)
 }
 
+func (s *GqlSourceStatus) GetTopLevelCondition() *apis.Condition {
+	return condSet.Manage(s).GetTopLevelCondition()
+}
+
 // IsReady returns true if the resource is ready overall.
 func (s *GqlSourceStatus) IsReady() bool {
 	return condSet.Manage(s).IsHappy()
@@ -60,16 +64,6 @@ func (gs *GqlSourceStatus) MarkSink(uri *apis.URL) {
 // MarkNoSink sets the condition that the source does not have a sink configured.
 func (gs *GqlSourceStatus) MarkNoSink(reason, messageFormat string, messageA ...interface{}) {
 	condSet.Manage(gs).MarkFalse(GqlSourceConditionSinkProvided, reason, messageFormat, messageA...)
-}
-
-func DeploymentIsAvailable(d *appsv1.DeploymentStatus, def bool) bool {
-	// Check if the Deployment is available.
-	for _, cond := range d.Conditions {
-		if cond.Type == appsv1.DeploymentAvailable {
-			return cond.Status == "True"
-		}
-	}
-	return def
 }
 
 // MarkDeployed sets the condition that the source has been deployed.

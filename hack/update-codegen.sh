@@ -4,35 +4,38 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-export GO111MODULE=on
+source $(dirname $0)/../vendor/knative.dev/hack/codegen-library.sh
+
 # If we run with -mod=vendor here, then generate-groups.sh looks for vendor files in the wrong place.
 export GOFLAGS=-mod=
 
-if [ -z "${GOPATH:-}" ]; then
-  export GOPATH=$(go env GOPATH)
-fi
+echo "=== Update Codegen for $MODULE_NAME"
 
-REPO_ROOT=$(dirname ${BASH_SOURCE})/..
-CODEGEN_PKG=${CODEGEN_PKG:-$(cd ${REPO_ROOT}; ls -d -1 ./vendor/k8s.io/code-generator 2>/dev/null || echo ../code-generator)}
-
-KNATIVE_CODEGEN_PKG=${KNATIVE_CODEGEN_PKG:-$(cd ${REPO_ROOT}; ls -d -1 ./vendor/knative.dev/pkg 2>/dev/null || echo ../pkg)}
+group "Kubernetes Codegen"
 
 # generate the code with:
 # --output-base    because this script should also be able to run inside the vendor dir of
 #                  k8s.io/kubernetes. The output-base is needed for the generators to output into the vendor dir
 #                  instead of the $GOPATH directly. For normal projects this can be dropped.
-chmod +x ${CODEGEN_PKG}/generate-groups.sh
 ${CODEGEN_PKG}/generate-groups.sh "deepcopy,client,informer,lister" \
-  github.com/itsmurugappan/gql-source/pkg/client github.com/itsmurugappan/gql-source/pkg/apis \
-  "sources:v1alpha1" \
-  --go-header-file ${REPO_ROOT}/hack/boilerplate/boilerplate.go.txt
+"github.com/itsmurugappan/gql-source/pkg/client" "github.com/itsmurugappan/gql-source/pkg/apis" \
+"sources:v1alpha1" \
+--go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
+
+group "Knative Codegen"
 
 # Knative Injection
-chmod +x ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh
 ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh "injection" \
-  github.com/itsmurugappan/gql-source/pkg/client github.com/itsmurugappan/gql-source/pkg/apis \
-  "sources:v1alpha1" \
-  --go-header-file ${REPO_ROOT}/hack/boilerplate/boilerplate.go.txt
+"github.com/itsmurugappan/gql-source/pkg/client" "github.com/itsmurugappan/gql-source/pkg/apis" \
+"sources:v1alpha1" \
+--go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
 
-# Make sure our dependencies are up-to-date
-${REPO_ROOT}/hack/update-deps.sh
+group "Deepcopy Gen"
+
+# Depends on generate-groups.sh to install bin/deepcopy-gen
+${GOPATH}/bin/deepcopy-gen \
+  -O zz_generated.deepcopy \
+  --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate.go.txt
+
+# save license
+go-licenses save "./vendor/..." --save_path="./third_party/VENDOR-LICENSE/" --force

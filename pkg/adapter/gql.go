@@ -25,7 +25,11 @@ func (a *Adapter) subscribe(ctx context.Context, q string) {
 	ctx = cloudevents.ContextWithRetriesExponentialBackoff(ctx, interval, retry)
 
 	client := graphql.NewClient(a.config.GqlServer)
-	subClient, err := client.SubscriptionClient(ctx, http.Header{"Cache-Control": []string{"no-cache"}})
+	header := http.Header{
+		"Cache-Control": []string{"no-cache"},
+	}
+	a.authClient.setAuthHeader(ctx, header)
+	subClient, err := client.SubscriptionClient(ctx, header)
 	if err != nil {
 		a.logger.Error("Error making subscription client", zap.Error(err))
 		return

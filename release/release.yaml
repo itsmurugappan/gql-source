@@ -318,7 +318,7 @@ spec:
       containers:
         - name: controller
           terminationMessagePolicy: FallbackToLogsOnError
-          image: docker.io/murugappans/controller@sha256:3d902b76055f8b8238ccec1ece180beead3bc0c69892cd53127f9cc8cecee592
+          image: ghcr.io/itsmurugappan/controller:gql-v1alpha1@sha256:f11a427d55dc1d7b509830eef4c88ff6294a7e49e0b620a9ebfc61b3a7177a31
           resources:
             requests:
               cpu: 100m
@@ -337,7 +337,7 @@ spec:
             - name: METRICS_DOMAIN
               value: muru.dev/sources
             - name: GQL_RA_IMAGE
-              value: docker.io/murugappans/receive_adapter@sha256:ec31b4fe15b9484b88103bd114ddf88a8d1e959c3697c0b883b355bfa48f64e3
+              value: ghcr.io/itsmurugappan/receive_adapter:gql-v1alpha1@sha256:a15a89d57cbc40c22aef21c72f339a6fe8da353d3d73ac7e1f7702b0e285858e
           securityContext:
             allowPrivilegeEscalation: false
           ports:

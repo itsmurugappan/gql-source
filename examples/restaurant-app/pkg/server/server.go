@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"sync"
 	"time"
-	"strings"
 
 	"github.com/99designs/gqlgen/handler"
 	"github.com/allegro/bigcache"
@@ -44,7 +44,7 @@ func loadInitialMenu(c *bigcache.BigCache) {
 		"Appetizer-ChickenWings":    {ItemType: schema.ItemTypesAppetizer, Name: "Chicken Wings"},
 		"Entree-ChickenScampi":      {ItemType: schema.ItemTypesEntree, Name: "Chicken Scampi"},
 		"Entree-CheeseRavioli":      {ItemType: schema.ItemTypesEntree, Name: "Cheese Ravioli"},
-		"Dessert-Tiramisu":           {ItemType: schema.ItemTypesDessert, Name: "Tiramisu"},
+		"Dessert-Tiramisu":          {ItemType: schema.ItemTypesDessert, Name: "Tiramisu"},
 	})
 	info, _ := json.Marshal(&schema.Info{
 		Address: "1000 Orange Ave Cypress California 90630",

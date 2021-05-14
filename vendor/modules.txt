@@ -97,8 +97,6 @@ github.com/emicklei/go-restful
 github.com/emicklei/go-restful/log
 # github.com/evanphx/json-patch v4.5.0+incompatible
 github.com/evanphx/json-patch
-# github.com/ghodss/yaml v1.0.0
-github.com/ghodss/yaml
 # github.com/go-logr/logr v0.1.0
 github.com/go-logr/logr
 # github.com/go-openapi/jsonpointer v0.19.3
@@ -134,14 +132,6 @@ github.com/google/go-cmp/cmp/internal/function
 github.com/google/go-cmp/cmp/internal/value
 # github.com/google/gofuzz v1.1.0
 github.com/google/gofuzz
-# github.com/google/licenseclassifier v0.0.0-20200708223521-3d09a0ea2f39
-## explicit
-github.com/google/licenseclassifier
-github.com/google/licenseclassifier/internal/sets
-github.com/google/licenseclassifier/stringclassifier
-github.com/google/licenseclassifier/stringclassifier/internal/pq
-github.com/google/licenseclassifier/stringclassifier/searchset
-github.com/google/licenseclassifier/stringclassifier/searchset/tokenizer
 # github.com/google/uuid v1.1.1
 ## explicit
 github.com/google/uuid
@@ -223,10 +213,6 @@ github.com/prometheus/statsd_exporter/pkg/mapper/fsm
 github.com/rickb777/date/period
 # github.com/rickb777/plural v1.2.1
 github.com/rickb777/plural
-# github.com/robfig/cron/v3 v3.0.1
-github.com/robfig/cron/v3
-# github.com/sergi/go-diff v1.1.0
-github.com/sergi/go-diff/diffmatchpatch
 # github.com/sirupsen/logrus v1.6.0
 github.com/sirupsen/logrus
 # github.com/spf13/pflag v1.0.5
@@ -791,7 +777,6 @@ k8s.io/client-go/util/keyutil
 k8s.io/client-go/util/retry
 k8s.io/client-go/util/workqueue
 # k8s.io/code-generator v0.18.6 => k8s.io/code-generator v0.17.6
-## explicit
 k8s.io/code-generator
 k8s.io/code-generator/cmd/client-gen
 k8s.io/code-generator/cmd/client-gen/args
@@ -841,8 +826,6 @@ k8s.io/klog
 # k8s.io/klog/v2 v2.0.0
 k8s.io/klog/v2
 # k8s.io/kube-openapi v0.0.0-20200410145947-bcb3869e6f29
-## explicit
-k8s.io/kube-openapi/cmd/openapi-gen
 k8s.io/kube-openapi/cmd/openapi-gen/args
 k8s.io/kube-openapi/pkg/common
 k8s.io/kube-openapi/pkg/generators
@@ -858,14 +841,8 @@ k8s.io/utils/trace
 ## explicit
 knative.dev/eventing/pkg/adapter/v2
 knative.dev/eventing/pkg/adapter/v2/util/crstatusevent
-knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
 knative.dev/eventing/pkg/apis/duck/v1
-knative.dev/eventing/pkg/apis/eventing
-knative.dev/eventing/pkg/apis/sources
-knative.dev/eventing/pkg/apis/sources/v1alpha1
-knative.dev/eventing/pkg/apis/sources/v1alpha2
-knative.dev/eventing/pkg/apis/sources/v1beta1
 knative.dev/eventing/pkg/configmap
 knative.dev/eventing/pkg/kncloudevents
 knative.dev/eventing/pkg/leaderelection
@@ -874,13 +851,15 @@ knative.dev/eventing/pkg/reconciler/source
 knative.dev/eventing/pkg/tracing
 knative.dev/eventing/pkg/utils
 knative.dev/eventing/pkg/utils/cache
+# knative.dev/hack v0.0.0-20210428122153-93ad9129c268
+## explicit
+knative.dev/hack
 # knative.dev/pkg v0.0.0-20200819202314-b5411f2221aa
 ## explicit
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
 knative.dev/pkg/apis/duck/ducktypes
 knative.dev/pkg/apis/duck/v1
-knative.dev/pkg/apis/duck/v1alpha1
 knative.dev/pkg/apis/duck/v1beta1
 knative.dev/pkg/changeset
 knative.dev/pkg/client/injection/ducks/duck/v1/addressable

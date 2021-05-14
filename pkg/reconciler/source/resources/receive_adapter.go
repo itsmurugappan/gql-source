@@ -2,6 +2,7 @@ package resources
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/itsmurugappan/gql-source/pkg/apis/sources/v1alpha1"
@@ -30,6 +31,9 @@ func MakeReceiveAdapter(args *ReceiveAdapterArgs) *v1.Deployment {
 		Name:  "SUBSCRIPTION_QUERIES",
 		Value: strings.Join(args.Source.Spec.SubscriptionQueries, ","),
 	}, {
+		Name:  "GQL_OIDC_AUTH_ENABLE",
+		Value: strconv.FormatBool(args.Source.Spec.OIDC.Enable),
+	}, {
 		Name:  "K_SINK",
 		Value: args.SinkURI,
 	}, {
@@ -39,6 +43,11 @@ func MakeReceiveAdapter(args *ReceiveAdapterArgs) *v1.Deployment {
 		Name:  "NAMESPACE",
 		Value: args.Source.Namespace,
 	}}, args.AdditionalEnvs...)
+
+	env = appendEnvFromSecretKeyRef(env, "GQL_AUTH_TOKEN_URL", args.Source.Spec.OIDC.TokenUrl.SecretKeyRef)
+	env = appendEnvFromSecretKeyRef(env, "GQL_OIDC_CLIENT", args.Source.Spec.OIDC.OIDCClient.SecretKeyRef)
+	env = appendEnvFromSecretKeyRef(env, "GQL_OIDC_USER", args.Source.Spec.OIDC.User.SecretKeyRef)
+	env = appendEnvFromSecretKeyRef(env, "GQL_OIDC_PASSWORD", args.Source.Spec.OIDC.Password.SecretKeyRef)
 
 	return &v1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
@@ -74,4 +83,22 @@ func MakeReceiveAdapter(args *ReceiveAdapterArgs) *v1.Deployment {
 			},
 		},
 	}
+}
+
+// appendEnvFromSecretKeyRef returns env with an EnvVar appended
+// setting key to the secret and key described by ref.
+// If ref is nil, env is returned unchanged.
+func appendEnvFromSecretKeyRef(env []corev1.EnvVar, key string, ref *corev1.SecretKeySelector) []corev1.EnvVar {
+	if ref == nil {
+		return env
+	}
+
+	env = append(env, corev1.EnvVar{
+		Name: key,
+		ValueFrom: &corev1.EnvVarSource{
+			SecretKeyRef: ref,
+		},
+	})
+
+	return env
 }
